@@ -1,0 +1,30 @@
+<mat-sidenav-container class="sidenav-container">
+    <mat-sidenav #sidenav class="sidenav">
+        Men&uacute; de Usuario
+        <div class="menu-container">
+            <button mat-button (click)="openLogin()">
+                <mat-icon>fingerprint</mat-icon>
+                <span>Iniciar Sesi&oacute;n</span>
+            </button>
+            <button mat-button (click)="openRegistryNewUser()">
+                <mat-icon>person_add</mat-icon>
+                <span>Registrarse</span>
+            </button>
+            <button mat-button (click)="openFavourites()" disabled>
+                <mat-icon>star_border</mat-icon>
+                <span>Favoritos</span>
+            </button>
+        </div>
+    </mat-sidenav>
+    
+    <mat-toolbar color="primary">
+        <button mat-button class="menu-button" (click)="sidenav.open()">
+            <mat-icon>menu</mat-icon>
+            <span>Men&uacute;</span>
+        </button>
+    </mat-toolbar>
+    
+    <!-- CONTENIDO !!! -->
+    <router-outlet></router-outlet>
+    
+</mat-sidenav-container>

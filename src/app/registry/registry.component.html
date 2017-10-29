@@ -1,0 +1,51 @@
+<div class="user-admin-container">
+    <h2>Registro de Usuario</h2>
+
+    <div class="error-messages">
+        <label *ngIf="userAdminForm.get('email').touched &&
+                        userAdminForm.get('email').invalid &&
+                        userAdminForm.get('email').valud != ''">
+            * ¡El e-mail ingresado es Invalido!
+        </label>
+        <br />
+        <label *ngIf="userAdminForm.get('password').touched &&
+                        userAdminForm.get('password').invalid &&
+                        userAdminForm.get('password').valud != ''">
+            * ¡La contrase&ntilde;a ingresada es Invalida!
+        </label>
+    </div>
+
+    <form [formGroup]="userAdminForm" (ngSubmit)="onSubmit()">            
+        <mat-form-field>
+            <input matInput placeholder="Nombre" formControlName="name" required>
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="Apellido" formControlName="lastname" required>
+        </mat-form-field>
+        <mat-form-field class="full-with">
+                <input matInput placeholder="Direcci&oacute;n" formControlName="address">
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="Telefono" formControlName="phonenumber">
+        </mat-form-field>
+
+        <mat-form-field>
+            <input matInput [matDatepicker]="picker" placeholder="Fecha de Nacimiento" formControlName="birthdate"/>
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+
+        <mat-form-field>
+            <input matInput placeholder="E-Mail" formControlName="email" required>
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="Contrase&ntilde;a" formControlName="password" type="password" required>
+        </mat-form-field>
+
+        <div style="color: red; font-size: 20px;" *ngIf="submitted">
+            ¡Usted se ha Registrado con Exito!
+        </div>
+        <br />
+        <button mat-raised-button type="submit" color="primary" [disabled]="userAdminForm.invalid" class="full-with">Guardar</button>
+    </form>
+</div>
